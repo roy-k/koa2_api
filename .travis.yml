@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- 8.9.0
+after_success:
+- ssh root@47.52.170.75 -o StrictHostKeyChecking=no 'cd /root/apps/uploadFile && git pull && npm i && pm2 start pm2.config.js'
+before_install:
+- openssl aes-256-cbc -K $encrypted_f56b66a5a166_key -iv $encrypted_f56b66a5a166_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 47.52.170.75\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+addons:
+  ssh_known_hosts: 47.52.170.75
