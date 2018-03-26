@@ -80,32 +80,19 @@ async function start(){
 }
 
 // 删除文件：fs.unlink(filename,callback);
-function remove(){
+function removeFile(filename){
     return new Promise((resolve,reject)=>{
         fs.unlink(filename,(err)=>{
             if(err){
-                reject(console.log(err))
+                reject(err)
             }
-            resolve(console.log('删除文件成功'))
+            resolve(true)
         });
     })
 }
 
-async function start(){
-    await remove();
-    fs.readdir(__dirname,(err,files)=>{
-        if(err){
-            return console.log(err)
-        }else{
-            files.forEach((item)=>{
-                console.log(item)
-            })
-        }
-    })
-}
-
-
 
 module.exports = {
     readDirName,
+    removeFile,
 }

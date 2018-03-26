@@ -4,9 +4,9 @@ const static = require('koa-static');
 const fs = require('fs');
 
 const {uploadFile} = require('../util/upload');
-const {readDirName} = require('../util/files');
+const {readDirName, removeFile} = require('../util/files');
 
-const {savePath} = require('../config/savePath');
+const {savePath, serverPath} = require('../config/savePath');
 
 // console.log('savePath', savePath,);
 
@@ -24,7 +24,13 @@ module.exports = router.post('/upload/picture/:dir', async (ctx) => {
     ctx.body = await readDirName(ctx, savePath);
 }).get('/getFiles/:dir', async (ctx) => {
     const filePath = path.join(savePath, ctx.params.dir || 'other');
-    ctx.body = await readDirName(ctx, filePath);
-}).get('/helloworld', async (ctx) => {
-    ctx.body = 'helloworld page!' + savePath;
+    const files = await readDirName(ctx, filePath);
+    ctx.body = files.map((v) => {
+        return `${serverPath}/${ctx.params.dir}/${v}`
+    });
+}).del('/delFile/:dir/:name', async (ctx) => {
+    const filePath = path.join(savePath,ctx.params.dir, ctx.params.name);
+    const isSuccess = await removeFile(filePath);
+    if(!isSuccess) ctx.throw(400, '参数错误');
+    ctx.body = 'success'
 });
