@@ -5,7 +5,7 @@ const static = require('koa-static');
 const { query } = require('../util/async-db')
 
 async function selectAllData( ) {
-  let sql = 'SELECT * FROM nowpalying'
+  let sql = 'SELECT * FROM nowplaying'
   let dataList = await query( sql )
   return dataList
 }
@@ -13,6 +13,7 @@ async function selectAllData( ) {
 async function getData() {
   let dataList = await selectAllData()
   console.log( dataList )
+  return dataList;
 }
 
 
