@@ -2,21 +2,15 @@ const router = require('koa-router')();
 const path = require('path');
 const static = require('koa-static');
 
-const { query } = require('../util/async-db')
+const {getData, addDatas} = require('../models/douban')
 
-async function selectAllData( ) {
-  let sql = 'SELECT * FROM nowplaying'
-  let dataList = await query( sql )
-  return dataList
-}
+// 查
+module.exports = router.get('/douban/getNowPlaying', async(ctx) => {
+  ctx.body = await getData();
+}).get('/douban/addNowPlayings', async(ctx) => {
+  ctx.body = await addDatas();
+});
 
-async function getData() {
-  let dataList = await selectAllData()
-  console.log( dataList )
-  return dataList;
-}
-
-
-module.exports = router.get('/getNowPlaying', async (ctx) => {
-    ctx.body = await getData();
-})
+// 增
+// 删
+// 改

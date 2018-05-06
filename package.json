@@ -4,7 +4,7 @@
   "description": "koa upload-async demo",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=pro node index.js",
+    "start": "cross-env NODE_ENV=pro nodemon index.js",
     "dev": "node index.js",
     "server": "pm2 start pm2.config.js"
   },
