@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - 8.9.0
 after_success:
-- ssh root@47.52.170.75 -o StrictHostKeyChecking=no 'cd /root/apps/uploadFile && git
-  pull && npm i && pm2 start pm2.config.js'
+- ssh root@47.52.170.75 -o StrictHostKeyChecking=no 'cd /root/apps/koa2_api && git
+  pull && npm i && pm2 restart all'
 before_install:
 - openssl aes-256-cbc -K $encrypted_efd4005f684b_key -iv $encrypted_efd4005f684b_iv
   -in id_rsa.enc -out ~/.ssh/id_rsa -d

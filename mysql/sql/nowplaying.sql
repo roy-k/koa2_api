@@ -4,11 +4,18 @@ CREATE TABLE   IF NOT EXISTS  `nowplaying` (
   `title` varchar(255) NOT NULL,
   `rating` varchar(10) DEFAULT 0,
   `info_url` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `duration` varchar(255) DEFAULT NULL,
+  `release` varchar(255) DEFAULT NULL,
+  `director` varchar(255) DEFAULT NULL,
+  `actors` varchar(255) DEFAULT NULL,
+  `voteCount` varchar(255) DEFAULT NULL,
   `ticket_url` varchar(255) DEFAULT NULL,
-  `create_time` varchar(20) DEFAULT NULL,
-  `modified_time` varchar(20) DEFAULT NULL,
+  `create_time` varchar(255) DEFAULT NULL,
+  `modified_time` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
 
 -- INSERT INTO nowpalying (title, rating) VALUES ('houlaide', '5.9');
 

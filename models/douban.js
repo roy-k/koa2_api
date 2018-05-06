@@ -19,12 +19,17 @@ async function addData(movie) {
   console.log('====================================');
   console.log(sql);
   console.log('====================================');
-  let dataList = await query(sql)
+  return await query(sql)
 }
 
 async function addDatas() {
   let sql = `insert into nowplaying (poster, title, rating, info_url, ticket_url, create_time, modified_time) values ${mocksql};`
   let dataList = await query(sql)
+}
+
+async function clearData() {
+  let sql = `TRUNCATE TABLE nowplaying;`
+  return await query(sql)
 }
 
 module.exports = {
