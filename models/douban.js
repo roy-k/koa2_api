@@ -1,5 +1,7 @@
 const {query} = require('../util/async-db')
 
+const {doubanNowPlaying} = require('../actions/generatorSql')
+
 const mocksql = require('../config/mockdb')
 
 async function selectAllData() {
@@ -16,15 +18,11 @@ async function getData() {
 async function addData(movie) {
   const {poster, title, rating, info_url, ticket_url} = movie;
   let sql = `insert into nowplaying (poster, title, rating, info_url, ticket_url) values ('${poster}','${title}','${rating}','${info_url}','${ticket_url}');`
-  console.log('====================================');
-  console.log(sql);
-  console.log('====================================');
   return await query(sql)
 }
 
-async function addDatas() {
-  let sql = `insert into nowplaying (poster, title, rating, info_url, ticket_url, create_time, modified_time) values ${mocksql};`
-  let dataList = await query(sql)
+async function addDatas(list) {
+  return await query(doubanNowPlaying(list))
 }
 
 async function clearData() {
@@ -32,8 +30,14 @@ async function clearData() {
   return await query(sql)
 }
 
+async function update(list) {
+  await clearData();
+  return await addDatas(list)
+}
+
 module.exports = {
     getData,
     addData,
     addDatas,
+    update,
 }

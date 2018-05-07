@@ -2,10 +2,13 @@ const Koa = require('koa')
 const path = require('path')
 const fs = require('fs')
 
+const cors = require('koa2-cors');
+const bodyParser = require('koa-bodyparser')
+
 const app = new Koa()
 
-var cors = require('koa2-cors');
 app.use(cors());
+app.use(bodyParser())
 
 const router = require('./routers/index')
 
