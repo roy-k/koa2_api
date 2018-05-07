@@ -11,8 +11,8 @@ CREATE TABLE   IF NOT EXISTS  `nowplaying` (
   `poster` varchar(255) DEFAULT NULL,
   `info_url` varchar(255) DEFAULT NULL,
   `ticket_url` varchar(255) DEFAULT NULL,
-  `create_time` varchar(255) DEFAULT NULL,
-  `modified_time` varchar(255) DEFAULT NULL,
+  `create_time` DATETIME DEFAULT NULL,
+  `modified_time` DATETIME DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
