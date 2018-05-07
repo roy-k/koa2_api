@@ -1,7 +1,7 @@
 {
-  "name": "upload-async",
+  "name": "koa_api",
   "version": "1.0.0",
-  "description": "koa upload-async demo",
+  "description": "koa apis",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=pro nodemon index.js",
@@ -11,7 +11,7 @@
   "keywords": [
     "koajs"
   ],
-  "author": "chenshenhai",
+  "author": "roy",
   "license": "MIT",
   "dependencies": {
     "busboy": "^0.2.14",
@@ -21,6 +21,7 @@
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
     "koa2-cors": "^2.0.5",
+    "log4js": "^2.5.3",
     "mysql": "^2.15.0"
   },
   "devDependencies": {
